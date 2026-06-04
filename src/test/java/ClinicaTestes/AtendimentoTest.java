@@ -2,6 +2,7 @@ package ClinicaTestes;
 
 import ClinicaVeterinaria.*;
 import ClinicaVeterinaria.StatusAtendimento.Agendado;
+import ClinicaVeterinaria.StatusAtendimento.Cancelado;
 import ClinicaVeterinaria.StatusAtendimento.EmAtendimento;
 import ClinicaVeterinaria.StatusAtendimento.Finalizado;
 import ClinicaVeterinaria.TaxasEDescontos.BanhoPosConsulta;
@@ -56,6 +57,14 @@ public class AtendimentoTest {
 
         atendimento.finalizar();
         assertTrue(atendimento.getEstado() instanceof Finalizado);
+    }
+
+    @Test
+    void devePermitirCancelarUmAtendimentoAgendado() {
+        Atendimento atendimento = new Atendimento(animal, new Consulta());
+
+        atendimento.cancelar();
+        assertTrue(atendimento.getEstado() instanceof Cancelado);
     }
 
     @Test
